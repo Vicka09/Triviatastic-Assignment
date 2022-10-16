@@ -1,9 +1,10 @@
 <script setup>
 import { onMounted} from 'vue'
-import useAPI from '@/composables/useAPI'
+import useAPI from '@/composables/useApi'
 import BaseTitle from '@/components/BaseTitle.vue'
+import useApi from '@/composables/useApi';
 
-const { categories, getCategories } = useAPI()
+const { categories, getCategories } = useApi()
 
 onMounted(async () => {
    await getCategories()

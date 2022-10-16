@@ -6,14 +6,14 @@ import NotificationAnswers from '@/components/NotificationAnswers.vue'
 import useScore from '@/composables/useScore'
 import DifficultyChip from '@/components/DifficultyChip.vue'
 import { onMounted, ref } from 'vue'
-import useAPI from '@/composables/useAPI'
+import useApi from '@/composables/useApi'
 import useColor from '@/composables/useColor'
 import BaseTitle from '@/components/BaseTitle.vue'
 
 
 const route = useRoute()
 const colors = useColor()
-const api = useAPI()
+const api = useApi()
 const question = ref(null)
 const answers = ref([])
 const showNotification = ref(false)

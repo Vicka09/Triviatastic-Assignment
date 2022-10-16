@@ -6,7 +6,7 @@ const instance = axios.create({
 
 const categories = ref([])
 
-export default function useAPI() {
+export default function useApi() {
   const getCategories = async () => {
     if (categories.value.length === 0) {
       const response = await instance.get('api_category.php')
