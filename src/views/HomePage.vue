@@ -14,21 +14,23 @@ onMounted(async () => {
   <!-- -->
   <BaseTitle>
   <template #logo>
-  <img src="logo.svg" alt="logo" />
+  <img src="/logo.svg" alt="logo" />
   </template>
   Triviantastic
   </BaseTitle>
-  <div class="categories">
-     <div v-if="categories.length > 0" class="categories"></div>
-    <RouterLink v-for="category in categories" :key="category.id" :to="`/question/category/${category.id}`"
-      class="category">
+<div v-if= 'categories.length > 0' class="categories">  
+    <RouterLink 
+      v-for="category in categories"
+      :key="category.id"
+      :to="`/question/category/${category.id}`"
+      class="category"
+   >
       {{ category.name }}
     </RouterLink>
-  </div>
+</div>
 </template>
 
 <style lang="postcss" scoped>
-
 .categories {
   @apply grid flex-grow grid-cols-4 gap-12;
   & .category {

@@ -1,3 +1,4 @@
+<!-- eslint-disable prettier/prettier -->
 <script setup>
 import { useRoute, useRouter } from 'vue-router'
 import { shuffle } from 'lodash-es'
@@ -5,7 +6,6 @@ import NotificationAnswers from '@/components/NotificationAnswers.vue'
 import useScore from '@/composables/useScore'
 import DifficultyChip from '@/components/DifficultyChip.vue'
 import { onMounted, ref } from 'vue'
-import { useRoute } from 'vue-router'
 import useAPI from '@/composables/useAPI'
 import useColor from '@/composables/useColor'
 import BaseTitle from '@/components/BaseTitle.vue'
@@ -56,17 +56,22 @@ const handleAnswer = (points) => {
 
 <template>
   <div v-if="question" class="question-container">
-      <BaseTitle> {{ question.category }}</BaseTitle>
-      <p class="question">{{ question.question }}</p>
-      <div class="answers">
-      <div v-for="answer in answers" :key="answer.id" :class="colors.getColor(answer.id)"   @click="handleAnswer(answer.points)" class="answer">
-        {{ answer.answer }}
-  </div>
-  </div>
-   <DifficultyChip :difficulty="question.difficulty" />
+    <BaseTitle> {{ question.category }}</BaseTitle>
+    <p class="question" v-html="question.question" />
+    <div class="answers">
+      <div 
+      v-for="answer in answers" 
+      :key="answer.id" 
+      :class="colors.getColor(answer.id)" 
+      class="answer"
+      @click="handleAnswer(answer.points)" 
+      v-html="answer.answer" />
+      
+    </div>
+    <DifficultyChip :difficulty="question.difficulty" />
   </div>
   <div v-else class="loading">Loading...</div>
-    <NotificationAnswers v-if="showNotification" :correct="isCorrect" />
+  <NotificationAnswers v-if="showNotification" :correct="isCorrect" />
 </template>
 
 <style lang="postcss" scoped>

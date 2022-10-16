@@ -1,11 +1,10 @@
 import axios from 'axios'
 import { ref } from 'vue'
-
-
-const categories = ref([])
 const instance = axios.create({
 	baseURL: 'https://opentdb.com/',
 })
+
+const categories = ref([])
 
 export default function useAPI() {
 	const getCategories = async () => {
@@ -24,6 +23,5 @@ export default function useAPI() {
 		})
 		return response.data.results[0]
 	}
-	return { instance, getCategories, getQuestion }
 	return { instance, categories, getCategories, getQuestion }
 }
